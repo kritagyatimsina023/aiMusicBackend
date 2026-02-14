@@ -15,7 +15,7 @@ const outputSchema = new mongoose.Schema({
     required: [true, 'It should have promt id'],
   },
   downloads: {
-    audio: { type: String }, // "/download/audio/<id>"
+    audio: { type: String },
     midi: { type: String },
   },
   playback: {
