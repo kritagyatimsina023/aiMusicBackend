@@ -7,30 +7,30 @@ const promptSchema = new mongoose.Schema({
   lyrics: {
     type: String,
     required: [true, 'Prompt is requied'],
-    maxlength: [400, 'Prompt cannot be greater than 400 words'],
+    maxlength: [800, 'Prompt cannot be greater than 800 words'],
     minlength: [10, 'Prompt should be greated than 10 words'],
   },
-  genre: {
-    type: String,
-    required: [true, 'Genre must be selected'],
-  },
-  instruments: {
-    type: Array,
-    validate: {
-      validator: function (value) {
-        return value.length > 0;
-      },
-      message: 'At least one instruments must be selected',
-    },
-  },
-  tempo: {
-    type: String,
-    required: [true, 'Tempo must be selected'],
-  },
-  key: {
-    type: String,
-    required: [true, 'Key must be selected'],
-  },
+  // genre: {
+  //   type: String,
+  //   required: [true, 'Genre must be selected'],
+  // },
+  // instruments: {
+  //   type: Array,
+  //   // validate: {
+  //   //   validator: function (value) {
+  //   //     return value.length > 0;
+  //   //   },
+  //   //   message: 'At least one instruments must be selected',
+  //   // },
+  // },
+  // tempo: {
+  //   type: String,
+  //   // required: [true, 'Tempo must be selected'],
+  // },
+  // key: {
+  //   type: String,
+  //   // required: [true, 'Key must be selected'],
+  // },
   ceatedAt: {
     type: Date,
     default: Date.now(),
