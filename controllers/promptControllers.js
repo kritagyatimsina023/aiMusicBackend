@@ -35,6 +35,7 @@ exports.createPrompt = async (req, res, next) => {
     const newPrompt = await Prompt.create({
       name: req.body.name,
       lyrics: req.body.lyrics,
+      version: req.body.version,
       // genre: req.body.genre,
       // instruments: req.body.instruments,
       // tempo: req.body.tempo,
