@@ -46,6 +46,18 @@ const promptSchema = new mongoose.Schema({
     required: [true, 'It should be user prompt'],
   },
 });
-
+promptSchema.pre(
+  'deleteOne',
+  { document: true, query: false },
+  async function (next) {
+    try {
+      // Delete all outputs associated with this prompt
+      await mongoose.model('Output').deleteMany({ prompt: this._id });
+      next();
+    } catch (error) {
+      next(error);
+    }
+  },
+);
 const PromptModel = mongoose.model('Prompt', promptSchema);
 module.exports = PromptModel;
