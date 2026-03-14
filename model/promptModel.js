@@ -10,6 +10,11 @@ const promptSchema = new mongoose.Schema({
     maxlength: [800, 'Prompt cannot be greater than 800 words'],
     minlength: [10, 'Prompt should be greated than 10 words'],
   },
+  version: {
+    type: String,
+    enum: ['version_1', 'version_2', 'version_3'],
+    default: 'version_1',
+  },
   // genre: {
   //   type: String,
   //   required: [true, 'Genre must be selected'],
