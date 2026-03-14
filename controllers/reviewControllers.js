@@ -16,6 +16,7 @@ exports.getAllReview = async (req, res, next) => {
 };
 exports.createReview = async (req, res, next) => {
   try {
+    console.log('User req', req.body);
     if (!req.body.userid) {
       return res.status(400).json({
         status: 'failed',
@@ -51,6 +52,7 @@ exports.createReview = async (req, res, next) => {
   }
 };
 exports.editReview = async (req, res, next) => {
+  console.log('Review id', req.params.id);
   try {
     const updatedreview = await Review.findByIdAndUpdate(
       req.params.id,
@@ -84,4 +86,30 @@ exports.deleteReview = async (req, res, next) => {
     status: 'success',
     message: 'Review Deleted',
   });
+};
+
+exports.getUserReview = async (req, res, next) => {
+  const { userId } = req.params;
+  console.log('User ID:', userId);
+
+  try {
+    if (!userId) {
+      return res.status(400).json({ message: 'No user ID provided' });
+    }
+
+    const review = await Review.findOne({ user: userId });
+
+    if (!review) {
+      return res.status(404).json({
+        message: 'No review found for this user',
+      });
+    }
+
+    res.status(200).json(review);
+  } catch (error) {
+    console.error('Error fetching user review:', error);
+    res.status(500).json({
+      message: 'Internal server error',
+    });
+  }
 };
