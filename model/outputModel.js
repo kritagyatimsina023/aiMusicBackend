@@ -23,9 +23,9 @@ const outputSchema = new mongoose.Schema({
     midi: { type: String },
   },
   session_id: { type: String },
-  lottieEmoji: {
-    type: Object,
-  },
+  // lottieEmoji: {
+  //   type: Object,
+  // },
 });
 
 const outputModel = mongoose.model('Output', outputSchema);

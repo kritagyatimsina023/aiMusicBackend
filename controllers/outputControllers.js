@@ -20,7 +20,7 @@ exports.insertOutput = async (req, res, next) => {
     const outputData = await outputModel.create({
       emotion: req.body.emotion,
       user: req.body.userId,
-      lottieEmoji: req.body.emotion,
+      // lottieEmoji: req.body.emotion,
       prompt: req.body.promptId,
       session_id: req.body.session_id,
       downloads: {
