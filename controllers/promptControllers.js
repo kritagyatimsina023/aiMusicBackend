@@ -36,10 +36,8 @@ exports.createPrompt = async (req, res, next) => {
       name: req.body.name,
       lyrics: req.body.lyrics,
       version: req.body.version,
-      // genre: req.body.genre,
-      // instruments: req.body.instruments,
-      // tempo: req.body.tempo,
-      // key: req.body.key,
+      caption: req.body.caption,
+
       user: req.body.userid,
     });
     await newPrompt.populate({
