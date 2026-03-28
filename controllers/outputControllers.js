@@ -46,10 +46,11 @@ const outputModel = require('../model/outputModel');
 
 exports.getOutput = async (req, res, next) => {
   const { id, promptId } = req.params;
-
+  console.log('This is backend userId ', id);
+  console.log('This is backend promptId', promptId);
   try {
     const outputData = await outputModel.find({ user: id, prompt: promptId });
-
+    console.log('This is outputData', outputData);
     res.status(200).json({
       status: 'success',
       data: outputData,
@@ -63,6 +64,7 @@ exports.getOutput = async (req, res, next) => {
 };
 
 exports.insertOutput = async (req, res, next) => {
+  console.log('This is backend response', req.body);
   try {
     const outputData = await outputModel.create({
       emotion: req.body.emotion,
