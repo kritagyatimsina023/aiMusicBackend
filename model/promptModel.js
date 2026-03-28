@@ -15,27 +15,10 @@ const promptSchema = new mongoose.Schema({
     enum: ['version_1', 'version_2', 'version_3'],
     default: 'version_1',
   },
-  // genre: {
-  //   type: String,
-  //   required: [true, 'Genre must be selected'],
-  // },
-  // instruments: {
-  //   type: Array,
-  //   // validate: {
-  //   //   validator: function (value) {
-  //   //     return value.length > 0;
-  //   //   },
-  //   //   message: 'At least one instruments must be selected',
-  //   // },
-  // },
-  // tempo: {
-  //   type: String,
-  //   // required: [true, 'Tempo must be selected'],
-  // },
-  // key: {
-  //   type: String,
-  //   // required: [true, 'Key must be selected'],
-  // },
+  caption: {
+    type: String,
+    required: [true, 'A caption is required'],
+  },
   ceatedAt: {
     type: Date,
     default: Date.now(),
