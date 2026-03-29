@@ -1,56 +1,14 @@
 const outputModel = require('../model/outputModel');
 
-// exports.getOutput = async (req, res, next) => {
-//   const { id, promptId } = req.params;
-//   try {
-//     const outputData = await outputModel.find({ user: id, prompt: promptId });
-//     res.status(200).json({
-//       status: 'success',
-//       data: outputData,
-//     });
-//   } catch (error) {
-//     res.status(400).json({
-//       status: 'failed',
-//       message: error.message,
-//     });
-//   }
-// };
-// exports.insertOutput = async (req, res, next) => {
-//   try {
-//     const outputData = await outputModel.create({
-//       emotion: req.body.emotion,
-//       user: req.body.userId,
-//       // lottieEmoji: req.body.emotion,
-//       prompt: req.body.promptId,
-//       session_id: req.body.session_id,
-//       downloads: {
-//         audio: req.body.downloads?.audio,
-//         midi: req.body.downloads?.midi,
-//       },
-//       playback: {
-//         audio: req.body.playback?.audio,
-//         midi: req.body.playback?.midi,
-//       },
-//     });
-//     res.status(200).json({
-//       status: 'success',
-//       data: outputData,
-//     });
-//   } catch (error) {
-//     res.status(200).json({
-//       status: 'failed',
-//       message: error.message,
-//     });
-//   }
-// };
-
 exports.getOutput = async (req, res, next) => {
   const { id, promptId } = req.params;
   console.log('This is backend userId ', id);
   console.log('This is backend promptId', promptId);
+
   try {
     const outputData = await outputModel.find({ user: id, prompt: promptId });
     console.log('This is outputData', outputData);
+
     res.status(200).json({
       status: 'success',
       data: outputData,
@@ -65,9 +23,11 @@ exports.getOutput = async (req, res, next) => {
 
 exports.insertOutput = async (req, res, next) => {
   console.log('This is backend response', req.body);
+
   try {
     const outputData = await outputModel.create({
       emotion: req.body.emotion,
+      score: req.body.score || null,
       user: req.body.userId,
       prompt: req.body.promptId,
       session_id: req.body.session_id,
@@ -87,6 +47,7 @@ exports.insertOutput = async (req, res, next) => {
       variants:
         req.body.variants?.map((variant) => ({
           variant_index: variant.variant_index,
+          score: variant.score || null,
           downloads: {
             audio: variant.downloads?.audio || null,
             midi: variant.downloads?.midi || null,

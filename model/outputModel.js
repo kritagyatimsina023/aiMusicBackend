@@ -5,6 +5,10 @@ const variantSchema = new mongoose.Schema(
     variant_index: {
       type: Number,
     },
+    score: {
+      type: Number,
+      default: null,
+    },
     downloads: {
       audio: { type: String, default: null },
       midi: { type: String, default: null },
@@ -20,6 +24,10 @@ const variantSchema = new mongoose.Schema(
 const outputSchema = new mongoose.Schema({
   emotion: {
     type: String,
+  },
+  score: {
+    type: Number,
+    default: null,
   },
   user: {
     type: mongoose.Schema.ObjectId,
